@@ -13,7 +13,7 @@ conda create -n DeepEIoU python=3.7
 conda activate DeepEIoU
 
 # Install pytorch with the proper cuda version to suit your machine
-# We are using torch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0 with cuda==11.7
+# We are using torch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0 with cuda==11.6
 
 cd Deep-EIoU/reid
 pip install -r requirements.txt
