@@ -205,6 +205,8 @@ def imageflow_demo(predictor, extractor, vis_folder, current_time, args):
             det = outputs[0].cpu().detach().numpy()
             scale = min(1440/width, 800/height)
             det /= scale
+            rows_to_remove = np.any(det[:, 1:3] < 1, axis=1)
+            det = det[~rows_to_remove]
             cropped_imgs = [frame[max(0,int(y1)):min(height,int(y2)),max(0,int(x1)):min(width,int(x2))] for x1,y1,x2,y2,_,_,_ in det]
             embs = extractor(cropped_imgs)
             if det is not None:
