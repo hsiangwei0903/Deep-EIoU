@@ -78,11 +78,12 @@ python tools/demo.py --path <your video path>
 ## Citation
 If you find our work useful, please kindly cite our paper, thank you.
 ```
-@article{huang2023iterative,
+@inproceedings{huang2024iterative,
   title={Iterative Scale-Up ExpansionIoU and Deep Features Association for Multi-Object Tracking in Sports},
-  author={Huang, Hsiang-Wei and Yang, Cheng-Yen and Hwang, Jenq-Neng and Huang, Chung-I},
-  journal={arXiv preprint arXiv:2306.13074},
-  year={2023}
+  author={Huang, Hsiang-Wei and Yang, Cheng-Yen and Sun, Jiacheng and Kim, Pyong-Kun and Kim, Kwang-Ju and Lee, Kyoungoh and Huang, Chung-I and Hwang, Jenq-Neng},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={163--172},
+  year={2024}
 }
 ```
 
