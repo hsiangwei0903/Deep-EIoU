@@ -2,7 +2,7 @@
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/iterative-scale-up-expansioniou-and-deep/multi-object-tracking-on-sportsmot)](https://paperswithcode.com/sota/multi-object-tracking-on-sportsmot?p=iterative-scale-up-expansioniou-and-deep)
 
-This is the official code for paper "Iterative Scale-Up ExpansionIoU and Deep Features Association for Multi-Object Tracking in Sports (2024 WACV RWS Workshop)". [Arxiv](https://arxiv.org/abs/2306.13074)
+This is the official code for paper "Iterative Scale-Up ExpansionIoU and Deep Features Association for Multi-Object Tracking in Sports (2024 WACV RWS Workshop)". [Paper](https://openaccess.thecvf.com/content/WACV2024W/RWS/papers/Huang_Iterative_Scale-Up_ExpansionIoU_and_Deep_Features_Association_for_Multi-Object_Tracking_WACVW_2024_paper.pdf)
 
 ## Setup Instructions
 
