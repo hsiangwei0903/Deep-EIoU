@@ -284,8 +284,10 @@ class Deep_EIoU(object):
                 detections = [STrack(STrack.tlbr_to_tlwh(tlbr), s, f) for
                               (tlbr, s, f) in zip(dets, scores_keep, features_keep)]
             else:
-                detections = [STrack(STrack.tlbr_to_tlwh(tlbr), s) for
-                              (tlbr, s) in zip(dets, scores_keep)]
+                detections = [
+                    STrack(STrack.tlbr_to_tlwh(tlbr), s, c)
+                    for (tlbr, s, c) in zip(dets_second, scores_second, classes_keep)
+                ]
         else:
             detections = []
 
