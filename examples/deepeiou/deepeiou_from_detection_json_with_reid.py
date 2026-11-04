@@ -112,7 +112,8 @@ def main(
     from cuvis_ai.node.json_reader import DetectionJsonReader
     from cuvis_ai.node.json_writer import ByteTrackCocoJson
     from cuvis_ai.node.numpy_writer import NumpyFeatureWriterNode
-    from cuvis_ai.node.preprocessors import BBoxRoiCropNode, ChannelNormalizeNode
+    from cuvis_ai.node.preprocessors import BBoxRoiCropNode
+    from cuvis_ai.node.pretreatments.standardize import IMAGENET_MEAN, IMAGENET_STD, Standardize
     from cuvis_ai.node.video import VideoIterator
 
     from cuvis_ai_deepeiou.node import DeepEIoUTrack, OSNetExtractor, ResNetExtractor
@@ -163,7 +164,9 @@ def main(
     extractor = None
     if with_reid:
         crop = BBoxRoiCropNode(output_size=(256, 128)).to(runtime_device)
-        normalize = ChannelNormalizeNode().to(runtime_device)
+        normalize = Standardize(
+            stats="given", layout="nchw", mean=IMAGENET_MEAN, std=IMAGENET_STD
+        ).to(runtime_device)
         extractor_cls = OSNetExtractor if backbone == "osnet" else ResNetExtractor
         extractor = extractor_cls(model_path=str(reid_weights)).to(runtime_device)
         logger.info(
@@ -230,7 +233,7 @@ def main(
                 bboxes_dev = det["bboxes"].to(runtime_device)
 
                 crops = crop.forward(images=frame_rgb, bboxes=bboxes_dev)["crops"]
-                normalized = normalize.forward(images=crops)["normalized"]
+                normalized = normalize.forward(cube=crops)["cube"]
                 embeddings = extractor.forward(crops=normalized)["embeddings"]
 
                 n_dets = int(det["bboxes"].shape[1])
